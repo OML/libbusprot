@@ -67,7 +67,6 @@ void bus_descriptor_add_node(struct bus_descriptor* desc,
 extern struct bus_descriptor* busses;
 extern size_t n_busses;
 
-
 extern bus_addr_t addr;
 extern bus_addr_t root_addr;
 

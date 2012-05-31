@@ -19,15 +19,15 @@ typedef uint32_t bus_timestamp_t;
 
 
 
-// Device types
+/* Device types */
 enum {
         DT_MOTOR,
         DT_DUAL_MOTOR,
         DT_ACCU,
-        DT_IPC,
+        DT_IPC
 };
 
-// Opcodes
+/* Opcodes */
 enum
 {
         BUSOP_HELLO = 0,
@@ -38,10 +38,10 @@ enum
 };
 
 
-// Events
+/* Events */
 enum
 {
-        EV_SET_THROTTLES,
+        EV_SET_THROTTLES
 };
 
 struct bus_opc

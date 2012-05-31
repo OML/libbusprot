@@ -18,11 +18,13 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
 
         int hello_reply_len = sizeof(struct bus_hdr) + sizeof(struct bus_hello_reply);
         char rx_buffer[hello_reply_len];
-        hello_reply = get_bus_hello_reply(rx_buffer);
 
         
         int hello_request_len = sizeof(struct bus_hdr) + sizeof(struct bus_hello);
         char tx_buffer[hello_request_len];
+        
+        hello_reply = get_bus_hello_reply(rx_buffer);
+
         hello = get_bus_hello(tx_buffer);
         header = get_bus_header(tx_buffer);
 
@@ -41,7 +43,7 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
         }
         
         if(uart_descriptor_bytes_available(&(bus->uart)) == 0)
-                return 0; // Timeout
+                return 0; /* Timeout */
 
         bus_read(bus, rx_buffer, hello_reply_len);
                         
