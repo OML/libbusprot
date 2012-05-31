@@ -72,7 +72,7 @@ extern bus_addr_t addr;
 extern bus_addr_t root_addr;
 
 extern unsigned long int rt_clock(void);
-
+extern void uart_init(struct uart_descriptor* desc, size_t id);
 
 
 void uart_has_byte_available(struct uart_descriptor* uart);

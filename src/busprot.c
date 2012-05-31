@@ -95,6 +95,8 @@ size_t uart_write(struct uart_descriptor* uart, const char* data, size_t len)
 void uart_has_byte_available(struct uart_descriptor* uart)
 {
         struct uart_ep_descriptor* ep = &(uart->rx_ep);
+        if(ep->pos == ep->len && ep->pos != 0)
+                ep->pos = ep->len = 0;
         ep->data[(ep->pos)++] = *(uart->rxreg);
         if(ep->pos == 2) {
                 ep->len = get_bus_header(ep->data)->len;

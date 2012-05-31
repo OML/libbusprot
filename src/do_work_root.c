@@ -8,7 +8,7 @@
 
 extern bus_addr_t addresses;
 
-void busprot_do_work(void)
+void bus_do_work(void)
 {
         int bus_id;
         int len;

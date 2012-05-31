@@ -1,7 +1,7 @@
 #include "bus.h"
 #if BUS_NODETYPE == BUS_NODE
 
-void busprot_do_work(void)
+void bus_do_work(void)
 {
 }
 
