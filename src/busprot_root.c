@@ -1,4 +1,4 @@
-#include "busprot.h"
+#include "bus.h"
 #if BUS_NODETYPE == BUS_ROOT
 
 #include "packets.h"
@@ -8,7 +8,7 @@
 
 unsigned int addresses = 1;
 
-void bus_init(struct bus_descriptor* bus)
+void bus_init_single(struct bus_descriptor* bus)
 {
         bus->layout = NULL;
         while(bus_send_hello(bus, addresses++) == 1);

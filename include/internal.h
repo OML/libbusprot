@@ -3,7 +3,7 @@
 
 struct bus_descriptor;
 
-void bus_init(struct bus_descriptor* bus);
+void bus_init_single(struct bus_descriptor* bus);
 
 void forward_packet(char* data, size_t len);
 

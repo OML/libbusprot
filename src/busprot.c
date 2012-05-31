@@ -1,4 +1,4 @@
-#include "busprot.h"
+#include "bus.h"
 
 #include "internal.h"
 #include "offsets.h"
@@ -6,20 +6,25 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct bus_descriptor busses[BUS_N_BUSSES];
+struct bus_descriptor* busses;
+size_t n_busses;
+
 bus_addr_t addr;
 bus_addr_t root_addr;
 
-void busprot_init()
+void bus_init(size_t _n_busses)
 {
+        n_busses = _n_busses;
         int i;
         struct bus_descriptor* bus;
+        busses = (struct bus_descriptor*)malloc(sizeof(struct bus_descriptor*) * n_busses);
+
         while(rt_clock() < 2000); // Wait 2 seconds for other devices to initialize
 
-        for(i = 0; i < BUS_N_BUSSES; i++) {
+        for(i = 0; i < n_busses; i++) {
                 bus = &(busses[i]);
                 uart_init(&(bus->uart), i);
-                bus_init(bus);
+                bus_init_single(bus);
         }
 }
 

@@ -1,11 +1,12 @@
 #ifndef _BUSPROT_H
 #define _BUSPROT_H
 
-#include "busprot_types.h"
+#include "bus_types.h"
 
-#ifndef BUS_N_UARTS
-#error "BUS_N_UARTS is not defined."
-#endif
+
+#define BUS_NODETYPE BUS_ROOT
+
+
 #ifndef BUS_NODETYPE
 #error "BUS_NODETYPE is not defined. Please define it as either BUS_ROOT or BUS_NODE."
 #endif
@@ -63,9 +64,9 @@ void bus_descriptor_add_node(struct bus_descriptor* desc,
                                 struct bus_node* node);
 
 
+extern struct bus_descriptor* busses;
+extern size_t n_busses;
 
-
-extern struct bus_descriptor busses[BUS_N_BUSSES];
 
 extern bus_addr_t addr;
 extern bus_addr_t root_addr;
@@ -78,7 +79,7 @@ void uart_has_byte_available(struct uart_descriptor* uart);
 
 
 
-void busprot_init(void);
+void bus_init(size_t n_busses);
 void bus_do_work(void);
 
 

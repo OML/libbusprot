@@ -1,4 +1,4 @@
-#include "busprot.h"
+#include "bus.h"
 
 #if BUS_NODETYPE == BUS_ROOT
 
@@ -14,7 +14,7 @@ void forward_packet(char* data, size_t len)
         struct bus_hdr* hdr = get_bus_header(data + sizeof(uint16_t));
 
         dest_bus = NULL;
-        for(i = 0; i < BUS_N_BUSSES && dest_bus == NULL; i++) {
+        for(i = 0; i < n_busses && dest_bus == NULL; i++) {
                 for(node = busses[i].layout; node; node = node->next) {
                         if(node->addr == hdr->daddr) {
                                 dest_bus = &busses[i];

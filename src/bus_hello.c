@@ -1,4 +1,4 @@
-#include "busprot.h"
+#include "bus.h"
 #if BUS_NODETYPE == BUS_ROOT
 
 #include "packets.h"

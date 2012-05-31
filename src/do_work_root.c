@@ -1,4 +1,4 @@
-#include "busprot.h"
+#include "bus.h"
 #if BUS_NODETYPE == BUS_ROOT
 
 #include "packets.h"
@@ -16,7 +16,7 @@ void busprot_do_work(void)
         struct bus_hdr* hdr;
         struct bus_descriptor* src_bus;
 
-        for(bus_id = 0; bus_id < BUS_N_BUSSES; bus_id++) {
+        for(bus_id = 0; bus_id < n_busses; bus_id++) {
                 src_bus = &busses[bus_id];
 
                 if(uart_descriptor_bytes_available(&(src_bus->uart))) {

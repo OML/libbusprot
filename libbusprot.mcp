@@ -8,7 +8,7 @@ dir_src=
 dir_bin=bin/
 dir_tmp=obj/
 dir_sin=
-dir_inc=
+dir_inc=include
 dir_lib=
 dir_lkr=
 [CAT_FILTERS]
@@ -70,17 +70,17 @@ file_003=src\routing.c
 file_004=src\busprot.c
 file_005=src\do_work_root.c
 file_006=src\do_work_node.c
-file_007=src\busprot.h
-file_008=src\busprot_types.h
-file_009=src\internal.h
-file_010=src\packets.h
-file_011=src\offsets.h
+file_007=include\bus.h
+file_008=include\bus_types.h
+file_009=include\internal.h
+file_010=include\offsets.h
+file_011=include\packets.h
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 suite_state=build-library
 [TOOL_SETTINGS]
 TS{7D9C6ECE-785D-44CB-BA22-17BF2E119622}=-g
-TS{25AC22BD-2378-4FDB-BFB6-7345A15512D3}=-g -Wall -DBUS_N_UARTS=4 -DBUS_NODETYPE=BUS_ROOT -Os
+TS{25AC22BD-2378-4FDB-BFB6-7345A15512D3}=-g -Wall -DBUILD_LIBRARY -Os
 TS{7DAC9A1D-4C45-45D6-B25A-D117C74E8F5A}=-Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TS{509E5861-1E2A-483B-8B6B-CA8DB7F2DD78}=
 [INSTRUMENTED_TRACE]

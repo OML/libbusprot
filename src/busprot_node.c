@@ -1,7 +1,7 @@
-#include "busprot.h"
+#include "bus.h"
 #if BUS_NODETYPE == BUS_NODE
 
-static void bus_init(struct bus_descriptor* bus)
+static void bus_init_single(struct bus_descriptor* bus)
 {
 }
 
