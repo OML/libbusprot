@@ -35,8 +35,8 @@ struct bus_node
 struct uart_ep_descriptor
 {
         char data[BUS_BUFFER_SIZE];
-        size_t pos;
-        size_t len;
+        int pos;
+        int len;
 };
 
 struct uart_descriptor
@@ -83,16 +83,6 @@ void bus_do_work(void);
 
 
 
-struct bus_hdr* get_bus_header(const char* data);
-static inline void uart_has_byte_available(struct uart_descriptor* uart)
-{
-        struct uart_ep_descriptor* ep = &(uart->rx_ep);
-        if(ep->pos == ep->len && ep->pos != 0)
-                ep->pos = ep->len = 0;
-        ep->data[(ep->pos)++] = *(uart->rxreg);
-        if(ep->pos == 2) {
-                ep->len = get_bus_header(ep->data)->len;
-        }
-}
+void uart_has_byte_available(struct uart_descriptor* uart);
 
 #endif /* busprot.h */

@@ -17,6 +17,9 @@ void bus_init(size_t _n_busses, int node_type)
 
         for(i = 0; i < n_busses; i++) {
                 bus = &(busses[i]);
+                bus->uart.rx_ep.pos = bus->uart.rx_ep.len = 0;
+                bus->uart.tx_ep.pos = bus->uart.tx_ep.len = 0;
+
                 uart_init(&(bus->uart), i);
                 bus_init_single(bus);
         }

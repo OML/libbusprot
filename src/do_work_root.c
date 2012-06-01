@@ -19,6 +19,10 @@ void bus_do_work(void)
         for(bus_id = 0; bus_id < n_busses; bus_id++) {
                 src_bus = &busses[bus_id];
 
+                struct bus_descriptor* bus0 = &(busses[0]);
+                if(bus0->uart.rx_ep.len > 0)
+                        __builtin_nop(); 
+
                 if(uart_descriptor_bytes_available(&(src_bus->uart))) {
                         len = uart_descriptor_bytes_available(&(src_bus->uart));
                         buffer = (char*)malloc(len);

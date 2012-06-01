@@ -15,6 +15,8 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
         struct bus_hello_reply* hello_reply;
         struct bus_node* node;
 
+        struct uart_descriptor* uart = &(bus->uart);
+
 
         int hello_reply_len = sizeof(struct bus_hdr) + sizeof(struct bus_hello_reply);
         char rx_buffer[hello_reply_len];
@@ -36,13 +38,16 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
                 
                          
         start = rt_clock();
+        __builtin_nop();
         bus_write(bus, tx_buffer, hello_request_len);
+        size_t bytes_available;
         while(rt_clock() - start < BUS_TIMEOUT) {
-                if(uart_descriptor_bytes_available(&(bus->uart)))
+                bytes_available = uart_descriptor_bytes_available(uart);
+                if(bytes_available > 0)
                         break;
         }
         
-        if(uart_descriptor_bytes_available(&(bus->uart)) == 0)
+        if(bytes_available == 0)
                 return 0; /* Timeout */
 
         bus_read(bus, rx_buffer, hello_reply_len);
