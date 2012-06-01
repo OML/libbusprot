@@ -38,20 +38,16 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
                 
                          
         start = rt_clock();
-        uint32_t now = rt_clock();
 
-        __builtin_nop();
         bus_write(bus, tx_buffer, hello_request_len);
         size_t bytes_available;
-        while(now - start < BUS_TIMEOUT) {
+        while(rt_clock() - start < BUS_TIMEOUT) {
                 bytes_available = uart_descriptor_bytes_available(uart);
                 if(bytes_available > 0)
                         break;
-                now = rt_clock();
         }
 
         if(new_addr == 3) {
-                
                 __builtin_nop();
                 __builtin_nop();
                 __builtin_nop();
