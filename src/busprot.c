@@ -43,10 +43,12 @@ int uart_descriptor_bytes_available(struct uart_descriptor* desc)
 
 void bus_write(struct bus_descriptor* bus, const char* data, size_t len)
 {
-        struct bus_hdr* hdr = get_bus_header(data);
+        struct bus_hdr* hdr = (struct bus_hdr*)data;
+        struct uart_descriptor* uart = &(bus->uart);
         hdr->len = len;
         hdr->crc = 0;
-        uart_write(&(bus->uart), data, len); 
+        
+        uart_write(uart, data, len); 
 }
 
 void bus_read(struct bus_descriptor* desc, char* data, size_t len)
@@ -65,7 +67,7 @@ size_t uart_read(struct uart_descriptor* uart, char* data, size_t len)
 size_t uart_write(struct uart_descriptor* uart, const char* data, size_t len)
 {
 	/*memcpy((char*)ep->tx_buffer.data, data, length); // put the data in the buffer */
-
+        __builtin_nop();
 #warning "Using non-interrupt driven UART writing methods"
 	int i;
 	for(i = 0; i < len; i++)
