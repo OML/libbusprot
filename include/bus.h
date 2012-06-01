@@ -1,11 +1,8 @@
 #ifndef _BUSPROT_H
 #define _BUSPROT_H
 
-#include "bus_types.h"
-
-
-#define BUS_NODETYPE BUS_ROOT
-
+#include <bus_types.h>
+#include <bus_config.h>
 
 #ifndef BUS_NODETYPE
 #error "BUS_NODETYPE is not defined. Please define it as either BUS_ROOT or BUS_NODE."
@@ -46,7 +43,7 @@ struct uart_descriptor
 {
         volatile unsigned int* rxreg;
         volatile unsigned int* txreg;
-        volatile unsigned int* txsta;
+        volatile unsigned int* stareg;
 
         struct uart_ep_descriptor rx_ep;
         struct uart_ep_descriptor tx_ep;
@@ -69,17 +66,33 @@ extern size_t n_busses;
 
 extern bus_addr_t addr;
 extern bus_addr_t root_addr;
+extern int bus_node_type;
+
+
 
 extern unsigned long int rt_clock(void);
 extern void uart_init(struct uart_descriptor* desc, size_t id);
-
-
-void uart_has_byte_available(struct uart_descriptor* uart);
+extern void incoming_event(struct bus_descriptor* bus, char* data, size_t len);
 
 
 
-void bus_init(size_t n_busses);
+void bus_init(size_t n_busses, int node_type);
 void bus_do_work(void);
 
+
+
+
+
+struct bus_hdr* get_bus_header(const char* data);
+static inline void uart_has_byte_available(struct uart_descriptor* uart)
+{
+        struct uart_ep_descriptor* ep = &(uart->rx_ep);
+        if(ep->pos == ep->len && ep->pos != 0)
+                ep->pos = ep->len = 0;
+        ep->data[(ep->pos)++] = *(uart->rxreg);
+        if(ep->pos == 2) {
+                ep->len = get_bus_header(ep->data)->len;
+        }
+}
 
 #endif /* busprot.h */

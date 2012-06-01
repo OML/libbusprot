@@ -36,6 +36,8 @@ file_008=.
 file_009=.
 file_010=.
 file_011=.
+file_012=.
+file_013=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -49,6 +51,8 @@ file_008=no
 file_009=no
 file_010=no
 file_011=no
+file_012=no
+file_013=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -62,6 +66,8 @@ file_008=no
 file_009=no
 file_010=no
 file_011=no
+file_012=no
+file_013=no
 [FILE_INFO]
 file_000=src\bus_hello.c
 file_001=src\busprot.c
@@ -70,17 +76,19 @@ file_003=src\do_work_root.c
 file_004=src\routing.c
 file_005=src\init_node.c
 file_006=src\init_root.c
-file_007=include\bus.h
-file_008=include\bus_types.h
-file_009=include\internal.h
-file_010=include\offsets.h
-file_011=include\packets.h
+file_007=src\offsets.c
+file_008=include\bus.h
+file_009=include\bus_types.h
+file_010=include\internal.h
+file_011=include\offsets.h
+file_012=include\packets.h
+file_013=include\bus_config.h
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 suite_state=build-library generic-16bit
 [TOOL_SETTINGS]
 TS{7D9C6ECE-785D-44CB-BA22-17BF2E119622}=-g
-TS{25AC22BD-2378-4FDB-BFB6-7345A15512D3}=-g -Wall -pedantic
+TS{25AC22BD-2378-4FDB-BFB6-7345A15512D3}=-g -Wall
 TS{7DAC9A1D-4C45-45D6-B25A-D117C74E8F5A}=-Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TS{509E5861-1E2A-483B-8B6B-CA8DB7F2DD78}=
 [INSTRUMENTED_TRACE]

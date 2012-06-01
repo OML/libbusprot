@@ -11,7 +11,7 @@ size_t n_busses;
 
 bus_addr_t addr = 0;
 bus_addr_t root_addr = 0;
-
+int bus_node_type = 0;
 
 void bus_descriptor_add_node(struct bus_descriptor* desc, 
                                 struct bus_node* new_node)
@@ -70,20 +70,8 @@ size_t uart_write(struct uart_descriptor* uart, const char* data, size_t len)
 	int i;
 	for(i = 0; i < len; i++)
 	{
-                while(*(uart->txsta) & (1 << 9));
+                while(*(uart->stareg) & (1 << 9));
 		*(uart->txreg) = data[i];
 	}
         return len;
-}
-
-
-void uart_has_byte_available(struct uart_descriptor* uart)
-{
-        struct uart_ep_descriptor* ep = &(uart->rx_ep);
-        if(ep->pos == ep->len && ep->pos != 0)
-                ep->pos = ep->len = 0;
-        ep->data[(ep->pos)++] = *(uart->rxreg);
-        if(ep->pos == 2) {
-                ep->len = get_bus_header(ep->data)->len;
-        }
 }

@@ -21,6 +21,7 @@ typedef uint32_t bus_timestamp_t;
 
 /* Device types */
 enum {
+        DT_ROOT,
         DT_MOTOR,
         DT_DUAL_MOTOR,
         DT_ACCU,
