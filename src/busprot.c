@@ -61,6 +61,8 @@ size_t uart_read(struct uart_descriptor* uart, char* data, size_t len)
 {
         len = min(uart->rx_ep.len, len);
         memcpy(data, uart->rx_ep.data, min(uart->rx_ep.len, len));
+        uart->rx_ep.len = 0; 
+        uart->rx_ep.pos = 0;
         return len;
 }
 

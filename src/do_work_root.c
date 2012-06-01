@@ -29,7 +29,7 @@ void bus_do_work(void)
                         bus_read(src_bus, buffer, len);
 
 
-                        hdr = get_bus_header(buffer);
+                        hdr = (struct bus_hdr*)buffer;
                         if(hdr->daddr == 0) {
                                 if(hdr->opcode.op == BUSOP_ACQUIRE_ADDRESS)
                                         bus_send_hello(src_bus, addresses);
