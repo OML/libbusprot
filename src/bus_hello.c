@@ -46,12 +46,6 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
                 if(bytes_available > 0)
                         break;
         }
-
-        if(new_addr == 3) {
-                __builtin_nop();
-                __builtin_nop();
-                __builtin_nop();
-        }
         
         if(bytes_available == 0)
                 return 0; /* Timeout */
