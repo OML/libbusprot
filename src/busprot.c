@@ -68,15 +68,14 @@ size_t uart_read(struct uart_descriptor* uart, char* data, size_t len)
 
 size_t uart_write(struct uart_descriptor* uart, const char* data, size_t len)
 {
-	/*memcpy((char*)ep->tx_buffer.data, data, length); // put the data in the buffer */
-        __builtin_nop();
-#warning "Using non-interrupt driven UART writing methods"
-	int i;
-	for(i = 0; i < len; i++)
-	{
-                while(*(uart->stareg) & (1 << 9));
-		*(uart->txreg) = data[i];
-	}
+		memcpy((char*)uart->tx_ep.data, data, len); // put the data in the buffer 
+#warning "Using non-interrupt driven UART writing methods"	
+		int i;
+		for(i = 0; i < len; i++)
+		{
+                while(!(*(uart->stareg) & (1 << 8)));
+				*(uart->txreg) = data[i];
+		}
         return len;
 }
 
