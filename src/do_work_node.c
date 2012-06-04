@@ -33,24 +33,26 @@ static void process_hello(struct bus_descriptor* bus, char* request)
 void bus_do_work(void)
 {
         struct bus_descriptor* bus;
+		struct uart_descriptor* uart;
         struct bus_hdr* hdr;
-        char* buffer;
+        char buffer[32];
         size_t len;
 
         int i;
         for(i = 0; i < n_busses; i++) {
                 bus = &busses[i];
-                len = uart_descriptor_bytes_available(&(bus->uart)); 
+				uart = &(bus->uart);
+                len = uart_descriptor_bytes_available(uart); 
                 if(len > 0) {
-                        buffer = (char*)malloc(len);
                         bus_read(bus, buffer, len);
                         
-                        hdr = get_bus_header(buffer);
+                        hdr = (struct bus_hdr*)buffer;
+
+                        if(hdr->opcode.op == BUSOP_HELLO)
+                          		process_hello(bus, buffer);
+
                         if(hdr->daddr == addr) {
                                 switch(hdr->opcode.op) {
-                                        case BUSOP_HELLO:
-                                                process_hello(bus, buffer);
-                                                break;
                                         case BUSOP_EVENT:
                                                 incoming_event(bus, buffer, len);
                                                 break;
@@ -60,8 +62,8 @@ void bus_do_work(void)
                         } else {
                                 bus_write(&busses[(i == 0) ? 1 : 0], buffer, len); 
                         }
-
-                        free(buffer);
+						__builtin_nop();
+                        //free(buffer);
                 }
         }
 }
