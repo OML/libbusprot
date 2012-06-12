@@ -25,7 +25,8 @@ enum {
         DT_MOTOR,
         DT_DUAL_MOTOR,
         DT_ACCU,
-        DT_IPC
+        DT_IPC,
+        DT_IO,
 };
 
 /* Opcodes */

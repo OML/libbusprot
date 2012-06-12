@@ -15,19 +15,19 @@ void forward_packet(char* data, size_t len)
         struct bus_descriptor* bus;
 
         dest_bus = NULL;
-
-        __builtin_nop();
         for(i = 0; i < n_busses && dest_bus == NULL; i++) {
                 bus = &(busses[i]);
                 for(node = bus->layout; node; node = node->next) {
                         __builtin_nop();
+                        __builtin_nop();
+                        __builtin_nop();
+                        __builtin_nop();
                         if(node->addr == hdr->daddr) {
-                                dest_bus = &(busses[i]);
+                                dest_bus = bus;
                                 break;
                         }
                 }
         }
-        __builtin_nop();
         if(dest_bus)
                 bus_write(dest_bus, data, len);
 

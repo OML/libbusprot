@@ -17,6 +17,7 @@ void bus_descriptor_add_node(struct bus_descriptor* desc,
                                 struct bus_node* new_node)
 {
         struct bus_node* iter;
+        __builtin_nop();
 
         if(desc->layout == NULL)  {
                 desc->layout = new_node;
