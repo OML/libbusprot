@@ -12,7 +12,7 @@ void bus_do_work(void)
 {
         int bus_id;
         int len;
-        char* buffer;
+        char buffer[BUS_BUFFER_SIZE];
         struct bus_hdr* hdr;
         struct bus_descriptor* src_bus;
 
@@ -21,7 +21,6 @@ void bus_do_work(void)
                 len = uart_descriptor_bytes_available(&(src_bus->uart));
 
                 if(len) {  
-                        buffer = (char*)malloc(len);
                         bus_read(src_bus, buffer, len);
 
 
@@ -30,10 +29,11 @@ void bus_do_work(void)
                                 if(hdr->opcode.op == BUSOP_ACQUIRE_ADDRESS)
                                         bus_send_hello(src_bus, addresses);
                         }                   
-                        else
+                        else {
                                 forward_packet(buffer, len);  
-
-                        free(buffer);
+                                
+                                send_done(src_bus, hdr->saddr);       
+                        }
                 }
         }
 }

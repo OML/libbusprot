@@ -33,7 +33,7 @@ static void process_hello(struct bus_descriptor* bus, char* request)
 void bus_do_work(void)
 {
         struct bus_descriptor* bus;
-		struct uart_descriptor* uart;
+	struct uart_descriptor* uart;
         struct bus_hdr* hdr;
         char buffer[BUS_BUFFER_SIZE];
         size_t len;
@@ -51,7 +51,7 @@ void bus_do_work(void)
                         if(hdr->opcode.op == BUSOP_HELLO)
                                 process_hello(bus, buffer);
 
-                        if(hdr->daddr == addr) {
+                        if(hdr->daddr == addr || hdr->dtype == bus_node_type) {
                                 switch(hdr->opcode.op) {
                                         case BUSOP_EVENT:
                                                 incoming_event(bus, buffer, len);
