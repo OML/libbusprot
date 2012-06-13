@@ -16,6 +16,7 @@ void bus_do_work(void)
         struct bus_hdr* hdr;
         struct bus_descriptor* src_bus;
 
+
         for(bus_id = 0; bus_id < n_busses; bus_id++) {
                 src_bus = &busses[bus_id];
                 len = uart_descriptor_bytes_available(&(src_bus->uart));
@@ -23,7 +24,6 @@ void bus_do_work(void)
                 if(len) {  
                         buffer = (char*)malloc(len);
                         bus_read(src_bus, buffer, len);
-
 
                         hdr = (struct bus_hdr*)buffer;
                         if(hdr->daddr == 0) {

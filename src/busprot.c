@@ -6,10 +6,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 struct bus_descriptor* busses;
 size_t n_busses;
 
-bus_addr_t addr = 0;
+bus_addr_t addr = 0xFFFF;
 bus_addr_t root_addr = 0;
 int bus_node_type = 0;
 
@@ -37,7 +38,6 @@ int uart_descriptor_bytes_available(struct uart_descriptor* desc)
                 return desc->rx_ep.len;
         return 0;
 }
-
 
 
 

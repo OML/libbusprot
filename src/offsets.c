@@ -22,5 +22,5 @@ struct bus_event_hdr* get_bus_event_header(const char* data)
 
 struct bus_set_motor_driver* get_bus_set_motor_driver(const char* data)
 {
-		return (struct bus_set_motor_driver*)(((char*)get_bus_header(data)) + sizeof(struct bus_hdr));
+		return (struct bus_set_motor_driver*)(((char*)get_bus_event_header(data)) + sizeof(struct bus_event_hdr));
 }

@@ -8,7 +8,7 @@ dir_src=
 dir_bin=bin
 dir_tmp=obj
 dir_sin=
-dir_inc=include
+dir_inc=C:\Users\Wouter\workspace\dc-motor-driver\src;include
 dir_lib=
 dir_lkr=
 [CAT_FILTERS]

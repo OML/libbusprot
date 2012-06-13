@@ -69,10 +69,10 @@ extern bus_addr_t root_addr;
 extern int bus_node_type;
 
 
-
+extern void incoming_event(struct bus_descriptor* bus, char* data, size_t len);
 extern unsigned long int rt_clock(void);
 extern void uart_init(struct uart_descriptor* desc, size_t id);
-extern void incoming_event(struct bus_descriptor* bus, char* data, size_t len);
+
 
 
 
