@@ -18,7 +18,7 @@ void forward_packet(char* data, size_t len)
         for(i = 0; i < n_busses && dest_bus == NULL; i++) {
                 bus = &(busses[i]);
                 for(node = bus->layout; node; node = node->next) {
-                        if(node->type == hdr->dtype || node->addr == hdr->daddr) {
+                        if(node->devtype == hdr->dtype || node->addr == hdr->daddr) {
                                 dest_bus = bus;
                                 break;
                         }
