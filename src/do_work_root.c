@@ -32,7 +32,7 @@ void bus_do_work(void)
                         else {
                                 forward_packet(buffer, len);  
                                 
-                                send_done(src_bus, hdr->saddr);       
+                                bus_send_done(src_bus, hdr->saddr);       
                         }
                 }
         }
