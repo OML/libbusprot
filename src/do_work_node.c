@@ -43,7 +43,7 @@ void bus_do_work(void)
         struct bus_descriptor* bus;
 		struct uart_descriptor* uart;
         struct bus_hdr* hdr;
-        char buffer[32];
+        char buffer[BUS_BUFFER_SIZE];
         size_t len;
 
         int i;
@@ -56,28 +56,21 @@ void bus_do_work(void)
                         
                         hdr = (struct bus_hdr*)buffer;
 
-                        if(hdr->opcode.op == BUSOP_HELLO)
-                          		process_hello(bus, buffer);
-						else
-						{
-							__builtin_nop();
+                        if(hdr->opcode.op == BUSOP_HELLO)              
+								process_hello(bus, buffer);
 
-                        	if(hdr->daddr == addr) {
-                              	  switch(hdr->opcode.op) {
-                                	        case BUSOP_EVENT:
-                                    	            incoming_event(bus, buffer, len);
-                                        	        break;
-                                      	 	 default:
-                                        	        break;
-                                	}
-                        	}
-						 
-							else {
-                            	    bus_write(&busses[(i == 0) ? 1 : 0], buffer, len); 
-                        	}
-						}
-						__builtin_nop();
-                        //free(buffer);
+                        if(hdr->daddr == addr || hdr->dtype == bus_node_type) {
+                                switch(hdr->opcode.op) {
+                                        case BUSOP_EVENT:
+                                                incoming_event(bus, buffer, len);
+                                                break;
+                                        default:
+                                                break;
+                                }
+                        } else {
+                                bus_write(&busses[(i == 0) ? 1 : 0], buffer, len); 
+                        }
+
                 }
         }
 }
