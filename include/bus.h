@@ -79,7 +79,7 @@ extern void uart_init(struct uart_descriptor* desc, size_t id);
 void bus_init(size_t n_busses, int node_type);
 void bus_do_work(void);
 
-
+void bus_send_event(const char* data, size_t size);
 
 
 

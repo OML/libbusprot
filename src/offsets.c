@@ -29,3 +29,8 @@ struct bus_set_outputs* get_bus_set_outputs(const char* data)
 {
         return (struct bus_set_outputs*)(((char*)get_bus_event_header(data)) + sizeof(struct bus_event_hdr));
 }
+
+struct bus_motor_sensors_event* get_bus_motor_sensors_event(const char* data)
+{
+        return (struct bus_motor_sensors_event*)(((char*)get_bus_event_header(data)) + sizeof(struct bus_event_hdr));
+}
