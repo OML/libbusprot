@@ -49,17 +49,16 @@ void bus_do_work(void)
         int i;
         for(i = 0; i < n_busses; i++) {
                 bus = &busses[i];
-				uart = &(bus->uart);
+		uart = &(bus->uart);
                 len = uart_descriptor_bytes_available(uart); 
                 if(len > 0) {
-                        bus_read(bus, buffer, len);
+                        bus_read(bus, (&buffer), len);
                         
-                        hdr = (struct bus_hdr*)buffer;
+                        hdr = (struct bus_hdr*)(&buffer);
 
                         if(hdr->opcode.op == BUSOP_HELLO)              
-								process_hello(bus, buffer);
-
-                        if(hdr->daddr == addr || hdr->dtype == bus_node_type) {
+				process_hello(bus, buffer);
+                        else if(hdr->daddr == addr || hdr->dtype == bus_node_type) {
                                 switch(hdr->opcode.op) {
                                         case BUSOP_EVENT:
                                                 incoming_event(bus, buffer, len);
