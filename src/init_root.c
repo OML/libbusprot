@@ -19,6 +19,8 @@ void bus_init(size_t _n_busses, int node_type)
         int i;
         struct bus_descriptor* bus;
         struct uart_descriptor* uart;
+        struct bus_node* testnode;
+
         bus_node_type = node_type;
         n_busses = _n_busses;
         busses = (struct bus_descriptor*)malloc(sizeof(struct bus_descriptor) * n_busses);
@@ -28,6 +30,7 @@ void bus_init(size_t _n_busses, int node_type)
 
         for(i = 0; i < n_busses; i++) {
                 bus = &(busses[i]);
+                bus->layout = NULL;
                 uart = &(bus->uart);
 
                 uart->rx_ep.pos = uart->rx_ep.len = 0;
