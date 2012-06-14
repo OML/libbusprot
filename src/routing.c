@@ -5,6 +5,8 @@
 #include "offsets.h"
 #include "internal.h"
 #include <stdlib.h>
+int n_dt_3 = 0;
+int n_dt_3_ac = 0;
 
 void forward_packet(char* data, size_t len)
 {
@@ -24,6 +26,11 @@ void forward_packet(char* data, size_t len)
                         }
                 }
         }
+        if(hdr->dtype == 3)
+                n_dt_3++;
+        if(dest_bus)
+                n_dt_3_ac++;
+
         if(dest_bus)
                 bus_write(dest_bus, data, len);
 
