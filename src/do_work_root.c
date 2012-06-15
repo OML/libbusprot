@@ -25,10 +25,8 @@ void bus_do_work(void)
                         bus_read(src_bus, buffer, len);
 
                         hdr = (struct bus_hdr*)buffer;
-                        if(hdr->daddr == 0 && hdr->dtype == DT_IPC) {
-                                if(hdr->opcode.op == BUSOP_ACQUIRE_ADDRESS)
-                                        bus_send_hello(src_bus, addresses);
-                        }                   
+                        if(hdr->opcode.op == BUSOP_ACQUIRE_ADDRESS)
+                                bus_send_hello(src_bus, addresses);             
                         else {
                                 forward_packet(buffer, len);  
                                 

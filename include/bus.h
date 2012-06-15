@@ -11,26 +11,13 @@
 #define BUS_ROOT 1
 #define BUS_NODE 2
 
-#if BUS_N_UARTS > 2 && BUS_NODETYPE != BUS_ROOT
-#error "Only ROOT nodes can have more than two bus endpoints"
-#endif
 
-
-#define BUS_N_BUSSES BUS_N_UARTS
-
+#define N_AVAILABLE_ADDRESSES 16
 
 #define BUS_TIMEOUT 250
 #define BUS_BUFFER_SIZE 32
 
 typedef unsigned int size_t;
-
-struct bus_node
-{
-        struct bus_node* next;
-
-        int devtype;
-        uint16_t addr;
-};
 
 struct uart_ep_descriptor
 {
@@ -54,11 +41,20 @@ int uart_descriptor_bytes_available(struct uart_descriptor* desc);
 
 struct bus_descriptor
 {
-        struct uart_descriptor uart;
-        struct bus_node* layout;       
+        struct uart_descriptor uart;      
 };
-void bus_descriptor_add_node(struct bus_descriptor* desc, 
-                                struct bus_node* node);
+
+struct bus_node
+{
+        int devtype;
+        struct bus_descriptor* bus;
+};
+
+
+#ifdef BUS_ROOT
+extern size_t n_nodes;
+extern struct bus_node nodes[N_AVAILABLE_ADDRESSES-1];
+#endif // BUS_ROOT
 
 
 extern struct bus_descriptor* busses;

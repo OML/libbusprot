@@ -51,13 +51,15 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
                 return 0; /* Timeout */
 
         bus_read(bus, rx_buffer, hello_reply_len);
-                        
-        node = (struct bus_node*)malloc(sizeof(struct bus_node));
-        node->next = NULL;
-        node->addr = new_addr;
-        node->devtype = hello_reply->devtype;
+        header = get_bus_header(rx_buffer);
+        if(header->opcode.op != BUSOP_HELLO)
+                return 0;     
 
-        bus_descriptor_add_node(bus, node);
+        __builtin_nop();
+
+        node = &nodes[new_addr];
+        node->devtype = hello_reply->devtype;
+        node->bus = bus;
 
         return 1;
 }

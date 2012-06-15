@@ -4,14 +4,20 @@
 #include "packets.h"
 
 #include <stdlib.h>
+#include <string.h>
 
-
+struct bus_node nodes[N_AVAILABLE_ADDRESSES-1];
 unsigned int addresses = 1;
 
 void bus_init_single(struct bus_descriptor* bus)
 {
-        bus->layout = NULL;
-        while(bus_send_hello(bus, addresses++) != 0);
+        int rv;
+        do {
+                rv = bus_send_hello(bus, addresses++);
+        } while(rv != 0 && addresses < N_AVAILABLE_ADDRESSES);
+
+        if(addresses == N_AVAILABLE_ADDRESSES)
+                __builtin_nop(); // Debugging
 }
 
 void bus_init(size_t _n_busses, int node_type)
@@ -19,7 +25,8 @@ void bus_init(size_t _n_busses, int node_type)
         int i;
         struct bus_descriptor* bus;
         struct uart_descriptor* uart;
-        struct bus_node* testnode;
+
+        memset(nodes, 0, sizeof(nodes));
 
         bus_node_type = node_type;
         n_busses = _n_busses;
@@ -30,7 +37,6 @@ void bus_init(size_t _n_busses, int node_type)
 
         for(i = 0; i < n_busses; i++) {
                 bus = &(busses[i]);
-                bus->layout = NULL;
                 uart = &(bus->uart);
 
                 uart->rx_ep.pos = uart->rx_ep.len = 0;

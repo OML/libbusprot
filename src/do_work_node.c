@@ -7,18 +7,18 @@
 #include "internal.h"
 #include "offsets.h"
 
-struct bus_descriptor* root_bus;
-
-
 // The descriptor on which we have to write to get to the root node
-static struct bus_descriptor* root_descriptor;
+static struct bus_descriptor* root_descriptor = NULL;
 
 
 void bus_send_event(const char* data, size_t len)
 {
-        bus_write(root_bus, data, len);
+        if(root_descriptor == NULL)
+                return;
+        bus_write(root_descriptor, data, len);
 }
 
+size_t n_adrs = 0;
 
 static void process_hello(struct bus_descriptor* bus, char* request)
 {
@@ -34,6 +34,7 @@ static void process_hello(struct bus_descriptor* bus, char* request)
 
 	if(req_hdr->daddr <= addr)
 	{
+                n_adrs++;
                 addr = req_hdr->daddr;
                 resp_hdr->opcode.op = BUSOP_HELLO;
                 resp_hdr->daddr = req_hdr->saddr;
@@ -62,10 +63,11 @@ void bus_do_work(void)
                         
                         hdr = (struct bus_hdr*)(&buffer);
 
-                        if(hdr->opcode.op == BUSOP_HELLO) {
-                                root_bus = bus;      
+                        if(hdr->opcode.op == BUSOP_HELLO)
 				process_hello(bus, buffer);
-                        } else if(hdr->daddr == addr || hdr->dtype == bus_node_type) {
+                        else if(hdr->opcode.op == BUSOP_DONE)
+                                __builtin_nop();
+                        else if(hdr->daddr == addr || hdr->dtype == bus_node_type) {
                                 switch(hdr->opcode.op) {
                                         case BUSOP_EVENT:
                                                 incoming_event(bus, buffer, len);
@@ -73,7 +75,7 @@ void bus_do_work(void)
                                         default:
                                                 break;
                                 }
-                        } else {
+                        } else if(n_busses > 1) {
                                 bus_write(&busses[(i == 0) ? 1 : 0], buffer, len); 
                         }
 
