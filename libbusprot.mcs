@@ -1,0 +1,136 @@
+[Header]
+MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
+Version=1.0
+[File000]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\bus_hello.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File001]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\busprot.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File002]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\do_work_node.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File003]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\do_work_root.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File004]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\routing.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File005]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\init_node.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File006]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\init_root.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File007]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\offsets.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File008]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\obj\bus_done.o
+Folder=Intermediary
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File009]
+Location=D:\Users\Leon\Development\School\OML\libbusprot\bin\libbusprot.a
+Folder=Output
+DeviceName=PIC24F16KA302
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={159ECAA5-9E6A-480A-B384-7EFD8D3BE1B4}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-ar.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|obj||$(AINDIR)||$(INCDIR)|C:\Users\Wouter\workspace\dc-motor-driver\src;include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\bus_hello.c|src\busprot.c|src\do_work_node.c|src\do_work_root.c|src\routing.c|src\init_node.c|src\init_root.c|src\offsets.c|src\bus_done.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=build-library generic-16bit
+ToolArgsString=
+TraceCmdString=
+DebugOptions=
+[TOOL_LOC_STAMPS]
+tool_loc{069BD372-6CA0-40D4-BF2F-5DC806D05083}=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-gcc.exe
+tool_loc{159ECAA5-9E6A-480A-B384-7EFD8D3BE1B4}=C:\Program Files (x86)\Microchip\mplabc30\v3.30b\bin\pic30-ar.exe

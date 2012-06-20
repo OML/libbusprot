@@ -14,7 +14,7 @@
 
 #define N_AVAILABLE_ADDRESSES 16
 
-#define BUS_TIMEOUT 250
+#define BUS_TIMEOUT 500
 #define BUS_BUFFER_SIZE 32
 
 typedef unsigned int size_t;
@@ -53,7 +53,7 @@ struct bus_node
 
 #ifdef BUS_ROOT
 extern size_t n_nodes;
-extern struct bus_node nodes[N_AVAILABLE_ADDRESSES-1];
+extern struct bus_node nodes[N_AVAILABLE_ADDRESSES];
 #endif // BUS_ROOT
 
 

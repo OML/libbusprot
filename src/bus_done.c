@@ -14,6 +14,7 @@ int bus_send_done(struct bus_descriptor* bus, bus_addr_t daddr)
         header = get_bus_header(buffer);
         header->daddr = daddr;
         header->dtype = DT_NULL;
+        header->stype = bus_node_type;
         header->opcode.op = BUSOP_DONE;
         header->saddr = addr;
         bus_write(bus, buffer, len);

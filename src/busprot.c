@@ -51,6 +51,9 @@ size_t uart_read(struct uart_descriptor* uart, char* data, size_t len)
 
 size_t uart_write(struct uart_descriptor* uart, const char* data, size_t len)
 {
+        if(uart == NULL)
+                return 0;
+
 	memcpy((char*)uart->tx_ep.data, data, len); // put the data in the buffer 
 #warning "Using non-interrupt driven UART writing methods"	
 	int i;

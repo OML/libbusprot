@@ -12,7 +12,7 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
         
         struct bus_hdr* header;
         struct bus_hello* hello;
-        struct bus_hello_reply* hello_reply;
+        volatile struct bus_hello_reply* hello_reply;
         struct bus_node* node;
 
         struct uart_descriptor* uart = &(bus->uart);
@@ -52,14 +52,20 @@ int bus_send_hello(struct bus_descriptor* bus, bus_addr_t new_addr)
 
         bus_read(bus, rx_buffer, hello_reply_len);
         header = get_bus_header(rx_buffer);
+        hello_reply = get_bus_hello_reply(rx_buffer);
+
+        if(hello_reply->devtype == 2)
+                __builtin_nop();
+
         if(header->opcode.op != BUSOP_HELLO)
                 return 0;     
-
-        __builtin_nop();
 
         node = &nodes[new_addr];
         node->devtype = hello_reply->devtype;
         node->bus = bus;
+
+
+        __builtin_nop();
 
         return 1;
 }
